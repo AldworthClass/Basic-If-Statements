@@ -10,28 +10,41 @@ namespace If_Statements
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("5.1 Task 1 - How Old Are You?");
-            Console.WriteLine("-------------------------");
-            Task1HowOld();
-            Console.WriteLine();
-            Console.WriteLine();
-
-            Console.WriteLine("5.1 Task 2 - Will it Freeze?");
+            Console.WriteLine("5.1 Task 1 - The Magic Word");
             Console.WriteLine("----------------------------");
-            Task2WillItFreeze();
-            Console.WriteLine();
-            Console.WriteLine();
-
-            Console.WriteLine("5.1 Task 3 - The Magic Word");
-            Console.WriteLine("----------------------------");
-            Task3MagicWord();
+            Task1MagicWord();
             Console.WriteLine();
             Console.WriteLine("Press ENTER to finish");
             Console.ReadLine();
+
+            Console.WriteLine("5.1 Task 2 - How Old Are You?");
+            Console.WriteLine("-------------------------");
+            Task2HowOld();
+            Console.WriteLine();
+            Console.WriteLine();
+
+            Console.WriteLine("5.1 Task 3 - Will it Freeze?");
+            Console.WriteLine("----------------------------");
+            Task3WillItFreeze();
+            Console.WriteLine();
+            Console.WriteLine();
+
+           
         }
 
-        // 5.1 Task 1 - How Old Are You?
-        public static void Task1HowOld()
+        // 5.1 Task 1 - The Magic Word
+        public static void Task1MagicWord()
+        {
+            string magicWord;
+            Console.Write("Please say the magic word: ");
+            magicWord = Console.ReadLine();
+            // Converts magicWord to lowercase upon comparison so it is not case sensitive
+            if (magicWord.ToLower() == "please")
+                Console.WriteLine("You're welcome.");
+        }
+
+        // 5.1 Task 2 - How Old Are You?
+        public static void Task2HowOld()
         {
             string name;
             int age;
@@ -39,7 +52,7 @@ namespace If_Statements
             name = Console.ReadLine();
             Console.WriteLine();
             Console.Write("Ok, " + name + ", how old are you?  ");
-            age = Convert.ToInt32(Console.ReadLine());
+            int.TryParse(Console.ReadLine(), out age);
             Console.WriteLine();
 
             if (age < 16)
@@ -60,13 +73,13 @@ namespace If_Statements
             }
         }
 
-        // 5.1 Task 2 - Will it Freeze?
-        public static void Task2WillItFreeze()
+        // 5.1 Task 3 - Will it Freeze?
+        public static void Task3WillItFreeze()
         {
             int temperature;
             Console.WriteLine("Please enter the freezing temperature of water: ");
-            temperature = Convert.ToInt32(Console.ReadLine());
-            if (temperature == 0)
+            int.TryParse(Console.ReadLine(), out temperature);
+            if (temperature == 0)   // Note, that this will be true even when the user enters invalid input.
             {
                 Console.WriteLine("Ahh yes, 0 degrees Celsius is correct.");
             }
@@ -80,15 +93,6 @@ namespace If_Statements
             }
         }
 
-        // 5.1 Task 3 - The Magic Word
-        public static void Task3MagicWord()
-        {
-            string magicWord;
-            Console.WriteLine("Please say the magic word:  ");
-            magicWord = Console.ReadLine();  
-            // Converts magicWOrd to lowercase before comparison so it is not case snsitive
-            if (magicWord.ToLower() == "please")
-                Console.WriteLine("You're welcome.");
-        }
+        
     }
 }
